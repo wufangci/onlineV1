@@ -1,0 +1,217 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 12737,
+      "max": [
+        1.009475827217102,
+        1.0000004768371582,
+        0.09853169322013855
+      ],
+      "min": [
+        -1.0000005960464478,
+        -1.0000005960464478,
+        -1.955410233733801e-08
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 152844,
+      "componentType": 5126,
+      "count": 12737,
+      "max": [
+        0.9140459299087524,
+        0.37026432156562805,
+        1.0
+      ],
+      "min": [
+        -0.666874885559082,
+        -0.3711433708667755,
+        0.3895456790924072
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 12737,
+      "max": [
+        1.0001157522201538,
+        1.001712679862976
+      ],
+      "min": [
+        -1.371224152535433e-05,
+        -0.00039621160249225795
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 74472,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "mikpav (https://sketchfab.com/mikpav)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/cloth-fabric-hanging-wall-banner-flag-poster-45e786c1ad634bffa8348154ef9751cd",
+      "title": "Cloth Fabric Hanging Wall Banner Flag Poster"
+    },
+    "generator": "Sketchfab-12.68.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 297888,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 101896,
+      "byteOffset": 297888,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 305688,
+      "byteOffset": 399784,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 705472,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Scene_-_Root",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "simply_cloth__0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "d75309b1045843d6978e407c6bff91b3.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        -2.2830960635936734e-05,
+        -140.13543701171665,
+        8.352721947805456e-06,
+        0.0,
+        -2.2830959266818753e-05,
+        8.352725681763586e-06,
+        140.13543701171665,
+        0.0,
+        -140.13543701171503,
+        2.2830959266818753e-05,
+        -2.2830960635936734e-05,
+        0.0,
+        0.0,
+        167.90960693359375,
+        0.0,
+        1.0
+      ],
+      "name": "simply_cloth"
+    },
+    {
+      "mesh": 0,
+      "name": "simply_cloth__0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

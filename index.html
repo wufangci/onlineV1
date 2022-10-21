@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WuHealar Online Exhibition</title>
+    <meta charset="utf-8" name="description" content="" />
+    <!-- aframe script -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
+    <!-- other component -->
+    <!-- 讓牆壁不會穿牆的套件，可以設定哪裡不能經過 https://github.com/donmccurdy/aframe-inspector-plugin-recast-->
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <!-- aframe-extras 支援相機在各個裝置的前後左右走動 -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="./js/aframe-room-component.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
+    <script src="./js/showInfo.js"></script>
+  </head>
+  <body>
+    <!-- inspector-plugin-recast	來自不會穿牆的套件  -->
+    <a-scene background="color: #ccc" inspector-plugin-recast>
+      <a-asset>
+        <!-- imgs -->
+
+        <img id="car_01" src="./assets/images/car/car01.jpeg" />
+        <img id="car_02" src="./assets/images/car/car02.jpeg" />
+        <img id="car_03" src="./assets/images/car/car03.jpeg" />
+        <img id="car_04" src="./assets/images/car/car04.jpeg" />
+        <img id="car_05" src="./assets/images/car/car05.jpeg" />
+        <img id="car_06" src="./assets/images/car/car06.jpeg" />
+        <img id="car_07" src="./assets/images/car/car07.jpeg" />
+        <img id="car_08" src="./assets/images/car/car08.jpeg" />
+        <img id="car_09" src="./assets/images/car/car09.jpeg" />
+        <img id="car_info" src="./assets/images/car/carinfo.jpeg" />
+        <img id="car_text01" src="./assets/images/car/cartext01.jpeg" />
+
+        <img id="car_paint01" src="./assets/images/car/carpaint01.jpeg" />
+        <img id="car_paint02" src="./assets/images/car/carpaint02.jpeg" />
+        <img id="car_paint03" src="./assets/images/car/carpaint03.jpeg" />
+        <img id="car_paint04" src="./assets/images/car/carpaint04.jpeg" />
+        <img id="car_paint05" src="./assets/images/car/carpaint05.jpeg" />
+        <img id="car_paint06" src="./assets/images/car/carpaint06.jpeg" />
+        <img id="car_paint07" src="./assets/images/car/carpaint07.jpeg" />
+        <img id="car_paint08" src="./assets/images/car/carpaint08.jpeg" />
+        <img id="car_paint09" src="./assets/images/car/carpaint09.jpeg" />
+        <img id="car_paint10" src="./assets/images/car/carpaint10.jpeg" />
+        <img id="car_paint11" src="./assets/images/car/carpaint11.jpeg" />
+        <img id="car_paint12" src="./assets/images/car/carpaint12.jpeg" />
+        <img id="car_paint13" src="./assets/images/car/carpaint13.jpeg" />
+        <img id="car_paintinfo" src="./assets/images/car/carpaintinfo.jpeg" />
+        <!-- <img id="car_info" src="./assets/images/car/carinfo.jpeg" /> -->
+
+        <img
+          id="bar_01"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/bar01.jpeg?v=1666367594470"
+        />
+        <img id="bar_info" src="./assets/images/bar/barinfo.jpeg" />
+        <img id="bar_02" src="./assets/images/bar/bar02.jpeg" />
+
+        <!-- textures -->
+
+        <img
+          id="marble"
+          src="./assets/texturev2/wall/TexturesCom_Plaster_Plain_2K_roughness.png"
+        />
+
+        <img
+          id="car_albedo"
+          src="./assets/texturev2/car/TexturesCom_Wood_Wenge_1K_albedo.png"
+        />
+        <img
+          id="car_normal"
+          src="./assets/texturev2/car/TexturesCom_Wood_Wenge_1K_normal.png"
+        />
+
+        <img
+          id="car_roughness"
+          src="./assets/texturev2/car/TexturesCom_Wood_Wenge_1K_roughness.png"
+        />
+
+        <!-- gltf models -->
+
+        <a-asset-item id="radio" src="./assets/model/radio/scene.gltf">
+        </a-asset-item>
+        <a-asset-item id="wheel" src="./assets/model/wheel/scene.gltf">
+        </a-asset-item>
+        <a-asset-item id="cloth" src="./assets/model/cloth/scene.gltf">
+        </a-asset-item>
+        <a-asset-item id="roof" src="./assets/model/stage_roof/scene.gltf">
+        </a-asset-item>
+
+        <a-asset-item id="beer" src="./assets/model/beer.gltf"> </a-asset-item>
+        <!-- 燈光模組 -->
+        <a-mixin
+          id="spot-light"
+          light="type:spot;
+						color:#E5D5A4;
+						intensity:0.2;
+						penumbra:1;
+						angle:15;"
+        >
+        </a-mixin>
+        <a-mixin
+          id="car_textures"
+          material="src:#car_albedo ; normalMap: #car_normal ; roughnessMap: #car_roughness ; emissive: #0f0f0f; roughness: 1"
+        >
+        </a-mixin>
+        <a-asset-item id="nav" src="./assets/model/navmesh.gltf"></a-asset-item>
+      </a-asset>
+
+      <!-- <a-gltf-model src="#nav" nav-mesh visible="false"> </a-gltf-model> -->
+      <!-- ambient light -->
+      <!-- <a-light id="amb" type="ambient" color="#9c9c9c" intensity="0.2">
+      </a-light> -->
+      <!-- directional light
+						 在直射光，增加物體陰影，並在物件上中加上 shadow
+						 light="cast-shadow:true" 
+			-->
+
+      <!-- :: 基本環境燈光 ------------------------------------>
+      <a-light
+        id="dir"
+        position="-1 2 -2"
+        type="directional"
+        color="white"
+        intensity="0.1"
+        light="cast-shadow:true"
+      >
+      </a-light>
+      <a-light
+        id="spot"
+        position="-1.04463 21.86744 33.38986"
+        type="spot"
+        color="#ffdc61"
+        light="castShadow: true; angle: 42.55; intensity: 0.19"
+      >
+      </a-light>
+      <!-- heisphere light -->
+      <a-light
+        id="hemi"
+        type="hemisphere"
+        color="#d2bca7"
+        ground-color="#C7C7C7"
+        position="0 11 -2"
+        intensity="0.9"
+      >
+      </a-light>
+      <!-- :: 基本空間物件 ------------------------------------>
+      <!-- 地板 -->
+      <a-plane
+        id="floor"
+        rotation="-90 0 0"
+        width="30"
+        height="45"
+        src="#marble"
+        material="repeat: 5 5; metalness:0; roughness:0.5"
+        shadow
+      >
+      </a-plane>
+      <!-- 天花板 -->
+      <a-gltf-model
+        id="model_roof"
+        position="0.33702 9 -15.73992"
+        src="#roof"
+        camera-cube-env="distance: 100000; resolution: 257.01; roughness: 5.35"
+        scale="0.0013 0.0015 0.001"
+        rotation="90 0 0"
+        material="color: #F9F9F9"
+        color="white"
+        shadow
+      >
+      </a-gltf-model>
+      <!-- 第一間房間 -->
+      <rw-room
+        id="main-room"
+        material="color: #F9F9F9"
+        length="18.66"
+        width="24"
+        height="8"
+        position="-11.38 0 -1"
+      >
+        <rw-wall position="2 0 0">
+          <!-- door-main -->
+          <rw-doorhole id="door-main"> </rw-doorhole>
+          <rw-doorlink
+            from="#door-main"
+            to="#door-second"
+            material="color:#CCC"
+            position="12 0 0"
+            width="2"
+            height="3"
+          >
+            <rw-sides></rw-sides>
+            <rw-ceiling></rw-ceiling>
+          </rw-doorlink>
+        </rw-wall>
+        <rw-wall> </rw-wall>
+        <rw-wall> </rw-wall>
+        <rw-wall> </rw-wall>
+      </rw-room>
+      <!-- 第二間房間 -->
+      <rw-room
+        id="second-room"
+        material="color: #121212"
+        length="8.76"
+        width="23.63"
+        height="8"
+        position="-11.380 0 -14.110"
+      >
+        <rw-wall></rw-wall>
+        <rw-wall></rw-wall>
+        <rw-wall>
+          <rw-doorhole id="door-second" height="4"> </rw-doorhole>
+        </rw-wall>
+        <rw-wall></rw-wall>
+      </rw-room>
+
+      <!-- :: 書寫空間展品 ------------------------------------>
+      <a-entity
+        id="write_img01"
+        geometry="height: 4.7; depth: 14.78; width: 0.09"
+        position="-1.95386 2.38436 6.4558"
+        width="10"
+        height="10"
+        material="emissive: #0d0d0d; color:#F9F9F9; src: ./assets/images/write/write01.jpeg"
+        rotation="0.08 0 0"
+      ></a-entity>
+
+      <a-entity
+        id="write_img02"
+        geometry="height: 4.95; depth: 14.78; width: 0.09"
+        position="-11.39682 2.80907 8.39302"
+        width="10"
+        height="10"
+        material="emissive: #0d0d0d; color: #F9F9F9; src: ./assets/images/write/write02.jpeg"
+        rotation="0.15699043586584555 0 0.6589014644004467"
+      ></a-entity>
+      <!-- TODO 補照片 -->
+      <!-- <a-entity
+     id="write_img04"
+     geometry="height: 4.95; depth: 14.78; width: 0.09"
+     position="-11.39682 2.4895 6.43768"
+     width="10"
+     height="10"
+     material="emissive: #0d0d0d; color:#F9F9F9; src: ./assets/images/write/write04.jpeg"
+     rotation="0.15699043586584555 90 0.6589014644004467"
+   ></a-entity> -->
+
+      <a-entity
+        id="write_info"
+        geometry="height: 6.26; depth: 4.24; width: 0.009"
+        position="-3.55728 2.51253 17.35479"
+        width="10"
+        height="10"
+        material="emissive: #000000; src: ./assets/images/write/writeinfo.jpeg; color: #F9F9F9"
+        rotation="0.15699043586584555 90 0.6589014644004467"
+        scale="1 0.6 0.54"
+      >
+      </a-entity>
+
+      <!-- TODO 待補說明文字 -->
+      <!-- 
+   <a-text
+     value="點擊收音機"
+     font="./assets/custom-msdf/custom-msdf.json"
+     color="#33C3F0"
+     negate="false"
+     text="width: 10.91; color: #787878; height: 0.2; tabSize: 5.16; wrapCount: 41.05"
+     position="-10.176 3 14.364"
+     rotation="-28.87 0 175.25"
+   >
+   </a-text> -->
+      <!-- <a-entity
+     id="playsound_info"
+     geometry="height: 4.88; depth: 9.45; width: 0.01"
+     position="-9.21882 1.69054 17.53241"
+     width="10"
+     height="10"
+     material="emissive: #000000; src: ./assets/images/write/playsoundinfo.jpeg; color: #ffffff"
+     scale="-0.08 0.17 0.15"
+   ></a-entity> -->
+
+      <!-- TODO 測試一週看是否 url 會變 -->
+
+      <a-entity
+        id="write_img_main"
+        geometry="primitive: sphere; radius: 2.05"
+        position="-6.77068 2.32034 6.53414"
+        material="emissive: #0d0d0d; src: https://cdn.glitch.global/567041ba-c5d4-4c6b-b328-f190d972a758/writemain.jpeg?v=1665844735037; height: 1.12; opacity: 0.9"
+        crossorigin="anonymous"
+        rotation="0.08 0 0"
+        opacity="0.8"
+        shadow
+      ></a-entity>
+
+      <!-- :: 書寫空間展品 收音機 -->
+      <a-gltf-model
+        id="model_radio"
+        position="-10.66702 1.8 16.96108"
+        scale="0.04 0.04 0.04"
+        camera-cube-env="distance: 100000; resolution: 256"
+        gltf-model="./assets/model/radio/scene.gltf"
+        rotation="-2.142862153789279 55.191305531566805 -3.338625072227307"
+        shadow
+      >
+      </a-gltf-model>
+      <!-- :: 書寫空間展品 收音機展台 -->
+      <a-entity
+        id="sound_show_box"
+        geometry=""
+        position="-10.66702 0.86874 16.96108"
+        material="emissive: #0d0d0d; height: 1.12"
+        rotation="0.08 0 0"
+        opacity="0.8"
+        shadow
+        scale="1.5 1.71 1.5"
+      ></a-entity>
+
+      <!-- :: 攤車空間展品 ------------------------------------>
+      <!-- :: 攤車空間展品  日記照片 -->
+      <a-entity
+        id="diary_area_pic"
+        position="-0.37543 2.17448 4.16753"
+        scale="1 0.79 0.71"
+      >
+        <a-entity
+          id="carInfo"
+          geometry="height: 4.01; depth: 3.24; width: 0.01"
+          position="-0.722 0.35776 11.77956"
+          width="10"
+          height="10"
+          material="src: #car_info; color: #F9F9F9"
+        ></a-entity>
+        <a-entity
+          id="car01"
+          geometry="height: 2.26; depth: 3.64; width: 0.02"
+          position="-0.722 -0.32655 8.16942"
+          width="10"
+          height="10"
+          material="src: #car_01; "
+        ></a-entity>
+        <a-entity
+          id="car02"
+          geometry="height: 2.25; depth: 1.37; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.7023 -0.32008 5.54729"
+          material="src: #car_02; "
+        ></a-entity>
+        <a-entity
+          id="car03"
+          geometry="height: 0.5; depth: 0.94; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.61159 -1.17206 3.7796"
+          material="src: #car_03; "
+        ></a-entity>
+        <a-entity
+          id="car04"
+          geometry="height: 0.5; depth: 0.94; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.61295 -1.18529 2.7575"
+          material="src: #car_04;"
+        ></a-entity>
+        <a-entity
+          id="car05"
+          geometry="height: 1.74; depth: 2.96; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63469 -0.57987 0.35374"
+          material="src: #car_05; "
+        ></a-entity>
+        <a-entity
+          id="car06"
+          geometry="height: 0.5; depth: 0.94; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.7494 -1.1924 -2.00613"
+          material="src: #car_06; "
+        ></a-entity>
+        <a-entity
+          id="car07"
+          geometry="height: 0.5; depth: 0.94; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63109 -1.18496 -3.01231"
+          material="src: #car_07; "
+        ></a-entity>
+        <a-entity
+          id="car08"
+          geometry="height: 2.01; depth: 1.55; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63109 -0.44556 -4.64506"
+          material="src: #car_08; "
+        ></a-entity>
+        <a-entity
+          id="car09"
+          geometry="height: 0.91; depth: 0.68; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63109 -0.99943 -5.94286"
+          material="src: #car_09; "
+        ></a-entity>
+      </a-entity>
+      <!-- :: 攤車空間展品  日記文字 -->
+      <!-- <a-entity
+        id="paint_area"
+        position="-0.37543 2.17448 4.16753"
+        scale="1 0.79 0.71"
+      >
+        <a-entity
+          id="carpaint01"
+          geometry="height: 0.3; width: 1.13; primitive: plane"
+          position="-0.74522 -1.956 9.46384"
+          shadow=""
+          material="src: #car_text01"
+          rotation="0 90 0"
+          scale="1 1.17 1"
+        ></a-entity>
+      </a-entity> -->
+      <a-entity
+        id="car_long_box"
+        geometry="depth: 0.21; height: 0.45"
+        position="-1.12008 0.93619 5.44109"
+        rotation="0.08 90 0"
+        scale="11.76 0.08 0.97"
+        material="color: #1f1e1f; emissive: #77777a"
+        shadow
+      ></a-entity>
+
+      <!-- :: 攤車空間展品  創作作品 -->
+
+      <a-entity
+        id="paint_area_pic"
+        position="13.17175 3.1 4.16753"
+        scale="1 0.79 0.71"
+      >
+        <a-entity
+          id="carpaint_info"
+          geometry="depth: 1.93; width: 0.01; height: 3.08"
+          width="10"
+          height="10"
+          position="-10.03068 -1.38352 -7.24324"
+          material="src: #car_paintinfo;  color: #F9F9F9"
+          rotation="0 90 0"
+        ></a-entity>
+        <a-entity
+          id="carpaint01"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.99899 -4.98693"
+          material="src: #car_paint01"
+        ></a-entity>
+        <a-entity
+          id="carpaint02"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.99943 -3.22313"
+          material="src: #car_paint02"
+        ></a-entity>
+        <a-entity
+          id="carpaint03"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63109 -0.99943 -1.44155"
+          material="src: #car_paint03"
+        ></a-entity>
+        <a-entity
+          id="carpaint04"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63109 -0.99943 0.31986"
+          material="src: #car_paint04"
+        ></a-entity>
+        <a-entity
+          id="carpaint05"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.98207 2.09342"
+          material="src: #car_paint05"
+        ></a-entity>
+        <a-entity
+          id="carpaint06"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63109 -0.99943 3.79743"
+          material="src: #car_paint06"
+        ></a-entity>
+        <a-entity
+          id="carpaint07"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.63109 -0.99943 5.54048"
+          material="src: #car_paint07"
+        ></a-entity>
+        <a-entity
+          id="carpaint08"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.99943 7.36016"
+          material="src: #car_paint08"
+        ></a-entity>
+        <a-entity
+          id="carpaint09"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.64109 -0.99943 9.21199"
+          material="src: #car_paint09"
+        ></a-entity>
+        <a-entity
+          id="carpaint10"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.99871 10.99175"
+          material="src: #car_paint10"
+        ></a-entity>
+        <a-entity
+          id="carpaint11"
+          geometry="height: 1.39; depth: 1.1; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.99943 12.48008"
+          material="src: #car_paint11"
+        ></a-entity>
+        <a-entity
+          id="carpaint12"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.99943 13.97497"
+          material="src: #car_paint12"
+        ></a-entity>
+        <a-entity
+          id="carpaint13"
+          geometry="depth: 1.5; width: 0.02"
+          width="10"
+          height="10"
+          position="-0.631 -0.99943 15.71786"
+          material="src: #car_paint13"
+        ></a-entity>
+      </a-entity>
+
+      <!-- :: 攤車空間展品  攤車 -->
+      <a-entity id="car_main" position="5.62788 1.032 0" rotation="">
+        <a-entity
+          id="car_main_table03"
+          geometry="depth: 1.64; height: 0.72; width: 4"
+          mixin="car_textures"
+          position="0 -0.27856 0"
+          shadow=""
+          material="emissive: #191819"
+        >
+        </a-entity>
+        <a-gltf-model
+          id="car_main_cloth"
+          src="#cloth"
+          scale="0.8 0.32 1.21"
+          rotation="0 90 0"
+          position="0 -0.90476 0.84478"
+          gltf-model="./assets/model/cloth/scene.gltf"
+        ></a-gltf-model>
+        <a-entity id="car_main_cabinet">
+          <a-entity
+            id="car_main_cabinet01"
+            geometry="depth: 1.42; height: 0.05; width: 1.8"
+            mixin="car_textures"
+            position="1 0.68825 0"
+            material="emissive: #131313"
+          >
+          </a-entity>
+          <a-entity
+            id="car_main_cabinet02"
+            geometry="depth: 1.42; height: 0.05; width: 1.8"
+            mixin="car_textures"
+            position="1 1.278 0"
+            material="emissive: #1a1a1a"
+          >
+          </a-entity>
+          <a-entity
+            id="car_main_cabinet03"
+            geometry="depth: 1.42; height: 0.05; width: 1.8"
+            mixin="car_textures"
+            position="1 0.263 0"
+            material="emissive: #101010"
+          >
+          </a-entity>
+
+          <a-entity
+            id="car_main_cabinet04"
+            geometry="depth: 0.09; height: 1.32; width: 0.07"
+            mixin="car_textures"
+            position="0.14336 0.71896 -0.61191"
+            material=""
+          >
+          </a-entity>
+
+          <a-entity
+            id="car_main_cabinet05"
+            geometry="depth: 0.09; height: 1.32; width: 0.07"
+            mixin="car_textures"
+            position="0.14336 0.71896 0.59102"
+            material=""
+          >
+          </a-entity>
+
+          <a-entity
+            id="car_main_cabinet06"
+            geometry="depth: 0.09; height: 1.32; width: 0.07"
+            mixin="car_textures"
+            position="1.86626 0.71896 -0.61191"
+            material=""
+          >
+          </a-entity>
+
+          <a-entity
+            id="car_main_cabinet07"
+            geometry="depth: 0.09; height: 1.32; width: 0.07"
+            mixin="car_textures"
+            position="1.84513 0.71896 0.58723"
+            material=""
+          >
+          </a-entity>
+        </a-entity>
+        <a-entity id="car_wheel">
+          <a-gltf-model
+            id="car_wheel01"
+            src="#wheel"
+            scale="0.7 0.7 0.7"
+            rotation="-3.2945073220022336 -161.82734557233996 27.780431654713095"
+            position="-1.85871 -0.83446 0.66912"
+          ></a-gltf-model>
+
+          <a-gltf-model
+            id="car_wheel02"
+            src="#wheel"
+            scale="0.7 0.7 0.7"
+            rotation="-3.2945073220022336 -161.82734557233996 27.780431654713095"
+            position="-1.87944 -0.83886 -0.71417"
+          ></a-gltf-model>
+          <a-gltf-model
+            id="car_wheel03"
+            src="#wheel"
+            scale="0.7 0.7 0.7"
+            rotation="-3.2945073220022336 -161.82734557233996 27.780431654713095"
+            position="1.86458 -0.85541 0.72099"
+          ></a-gltf-model>
+
+          <a-gltf-model
+            id="car_wheel04"
+            src="#wheel"
+            scale="0.7 0.7 0.7"
+            rotation="-3.2945073220022336 -161.82734557233996 27.780431654713095"
+            position="1.87709 -0.8396 -0.71627"
+          ></a-gltf-model>
+        </a-entity>
+      </a-entity>
+
+      <!-- :: 攤車空間展品  故事牆 -->
+      <a-entity
+        id="car_story_wall"
+        position="12.72335 2.52533 3.71278"
+        rotation="0 -118.8176957230496 0"
+      >
+        <a-entity
+          id="car_story_wall01"
+          geometry="depth: 1.79; height: 3.260; width: 0.17"
+          mixin="car_textures"
+          position="-1.75755 -0.27744 3.02005"
+          scale=""
+          rotation="0 155.71273998270382 0"
+          material=""
+        >
+        </a-entity>
+        <a-entity
+          id="car_story_wall02"
+          geometry="depth: 1.79; height: 3.260; width: 0.17"
+          mixin="car_textures"
+          position="-1.72414 -0.27753 4.7402"
+          normal-map="#car_normal"
+          roughness-map="#car_roughness"
+          rotation="0 -146.2503419961183 0"
+          material=""
+        >
+        </a-entity>
+
+        <a-entity
+          id="car_story_wall03"
+          geometry="depth: 1.79; height: 3.260; width: 0.17"
+          mixin="car_textures"
+          position="-1.72414 -0.27753 4.7402"
+          normal-map="#car_normal"
+          roughness-map="#car_roughness"
+          rotation="0 -146.2503419961183 0"
+          material=""
+        >
+        </a-entity>
+
+        <a-entity
+          id="car_story_wall04"
+          geometry="depth: 1.79; height: 3.260; width: 0.17"
+          mixin="car_textures"
+          position="-1.72414 -0.27753 4.7402"
+          normal-map="#car_normal"
+          roughness-map="#car_roughness"
+          rotation="0 -146.2503419961183 0"
+          material=""
+        >
+        </a-entity>
+        <a-entity
+          id="car_story_wall05"
+          geometry="depth: 1.79; height: 3.260; width: 0.17"
+          mixin="car_textures"
+          position="-1.72414 -0.27753 4.7402"
+          normal-map="#car_normal"
+          roughness-map="#car_roughness"
+          rotation="0 -146.2503419961183 0"
+          material=""
+        >
+        </a-entity>
+      </a-entity>
+
+      <!-- :: 攤車空間展品  信箱 -->
+
+      <!-- 中間隔牆 -->
+      <!-- TODO 補材質 -->
+      <a-entity
+        id="center_wall"
+        geometry="width: 1.93; height: 0.99; depth: 0.88"
+        material="color: #F9F9F9"
+        position="-1.58164 2.301 1.61281"
+        scale="12.88 4.67 0.92"
+        rotation="0 90 0"
+      ></a-entity>
+
+      <!-- :: 吧台空間展品 ------------------------------------>
+
+      <a-entity
+        id="bar_main"
+        position="-1.58164 2.4306 1.61281"
+        rotation="0 0 0"
+      >
+        <a-entity
+          id="bar_main_table01"
+          geometry="width: 0.34; height: 0.26; depth: 1.63"
+          material="color: #1f1f20;"
+          position="11.6644 -1.85326 -10.85478"
+          scale="12.88 4.67 0.92"
+          rotation=""
+        ></a-entity>
+        <a-entity
+          id="bar_main_table02"
+          geometry="width: 0.36; height: 0.26; depth: 1.63"
+          material="color: #1f1f20;"
+          position="10.22185 -1.85326 -13.55611"
+          scale="12.88 4.67 0.92"
+          rotation="0 90 0"
+        ></a-entity>
+      </a-entity>
+
+      <a-entity
+        id="barinfo"
+        position="-1.12232 1.87115 -6.52207"
+        geometry="width: 0.03; height: 2.36; depth: 1.74"
+        material="src: #bar_info; emissive: #0d0d0d; color: #e6e6e6"
+      ></a-entity>
+      <!-- <a-entity
+        id="bar02"
+        position="-1.12232 1.87115 -6.52207"
+        geometry="width: 0.03; height: 2.36; depth: 1.74"
+        material="src: #bar_02; emissive: #0d0d0d; "
+      ></a-entity> -->
+      <a-entity
+        id="bar02"
+        position="-1.12232 1.87115 -9.03387"
+        geometry="width: 0.03; height: 1.8; depth: 3.1"
+        material="src: #bar_02; emissive: #0d0d0d"
+        showinfo="src: #car_info;"
+      ></a-entity>
+      <a-entity
+        id="bar01"
+        crossorigin="anonymous"
+        position="12.01825 3.8689 -11.773"
+        geometry="height: 3.5; depth: 5.84; width: 0.48"
+        material="src: #bar_01; opacity: 0.8; emissive: #000000"
+      ></a-entity>
+
+      <!-- :: 酒吧空間展品 收音機 -->
+
+      <a-gltf-model
+        id="model_bar"
+        arc="#beer"
+        position="9.35925 1.71881 -9.2116"
+        scale="1.5 1.5 1.5"
+        gltf-model="./assets/model/beer.gltf"
+        shadow=""
+        rotation="0 25 0"
+      >
+      </a-gltf-model>
+
+      <!-- 
+			 a-camera 內建設定相機 : 請設定在最後面
+			 position 設定相機的起始位置
+			 fov	    設定相機的視線角度範圍，預設是 80 fov="80" 是給 vr的觀看 ， 45 度 適合網頁觀看 不會變形
+			 far      設定相機最遠可以照到哪裡
+			 near     設定最近可以看到哪裡
+			
+			-->
+
+      <!-- 可以支援相機前後左右移動的套件 
+				look-controls 可以根據人的方向移動
+				movement-controls    aframe-extras 套件提供可以根據各個裝置，前後走動
+			
+			-->
+      <!-- 
+				a-cursor 網頁中的準心，會出現一個點
+				cursor="rayOrigin: mouse;" 以網頁中的滑鼠，當作點擊的目標，需要使用滑鼠點擊可以這樣設定。 
+				raycaster="objects: .interactable" cursor 可以互動的物件 指定 class name，並且要掛在互動的物件上面 也要掛上相同的 class name 
+				visible="false" 預設關閉物件 
+			-->
+      <a-entity
+        id="rig"
+        position="0 0 5"
+        movement-controls="constrainToNavMesh: true"
+      >
+        <a-entity camera position="0 1.6 0" rotation="0 -90 -90" look-controls>
+          <!-- cursor 也可以寫成這樣  -->
+          <a-entity
+            cursor="rayOrigin: mouse;"
+            raycaster="objects: .interactable"
+          ></a-entity>
+          <a-plane
+            id="infocard"
+            position="0 0 -0.1"
+            color="black"
+            opacity="0.7"
+            visible="false"
+          >
+            <a-plane
+              id="img"
+              src="./assets/images/bar/barinfo.jpeg"
+              position="0 0 0.01"
+              color="white "
+              width="0.07"
+              height="0.1"
+            >
+            </a-plane>
+          </a-plane>
+        </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+  <!-- <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script> -->
+</html>

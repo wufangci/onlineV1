@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bar
+* source:	https://sketchfab.com/3d-models/bar-773fb864976a4751b5297f34ed37551f
+* author:	mikseb98 (https://sketchfab.com/mikseb98)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bar" (https://sketchfab.com/3d-models/bar-773fb864976a4751b5297f34ed37551f) by mikseb98 (https://sketchfab.com/mikseb98) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	STAGE ROOF
+* source:	https://sketchfab.com/3d-models/stage-roof-2596b83ab204429eab1c8a2b7047d434
+* author:	rylanlucyk (https://sketchfab.com/rylanlucyk)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "STAGE ROOF" (https://sketchfab.com/3d-models/stage-roof-2596b83ab204429eab1c8a2b7047d434) by rylanlucyk (https://sketchfab.com/rylanlucyk) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
