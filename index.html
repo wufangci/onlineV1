@@ -16,10 +16,11 @@
     <script src="./js/aframe-room-component.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
     <!-- sound component -->
-    <script src="./js/soundutils.js"></script>
+    <!-- <script src="./js/soundutils.js"></script> -->
     <script src="./js/showInfo.js"></script>
-    <script src="./js/soundplayer.js"></script>
+    <!-- <script src="./js/soundplayer.js"></script> -->
     <script src="./js/showsound.js"></script>
+    <script src="./js/showstory.js"></script>
   </head>
   <body>
     <!-- inspector-plugin-recast	來自不會穿牆的套件  -->
@@ -60,6 +61,50 @@
         <img id="car_paint13" src="./assets/images/car/carpaint13.jpeg" /> -->
         <img id="car_paintinfo" src="./assets/images/car/carpaintinfo.jpeg" />
         <!-- <img id="car_info" src="./assets/images/car/carinfo.jpeg" /> -->
+        <img
+          id="car_story_01"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story01.png?v=1666489762013"
+          alt=""
+        />
+
+        <img
+          id="car_story_02"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0201.png?v=1666489763575"
+          alt=""
+        />
+
+        <img
+          id="car_story_03"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0301.png?v=1666489758273"
+          alt=""
+        />
+        <img
+          id="car_story_04"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0401.png?v=1666489762871"
+          alt=""
+        />
+        <img
+          id="car_story_05"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0501.png?v=1666489758174"
+          alt=""
+        />
+        <img
+          id="car_story_06"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0601.png?v=1666489761483"
+          alt=""
+        />
+        <img
+          id="car_story_0102"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0101.png?v=1666489755866"
+          alt=""
+        />
         <img
           id="bar_01"
           src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/bar01.jpeg?v=1666367594470"
@@ -123,7 +168,6 @@
           id="marble"
           src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/TexturesCom_Plaster_Plain_2K_roughness.png?v=1666455409343"
         />
-
         <img
           crossorigin="anonymous"
           id="car_albedo"
@@ -134,7 +178,6 @@
           id="car_normal"
           src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/TexturesCom_Wood_Wenge_1K_normal.png?v=1666456789874"
         />
-
         <img
           crossorigin="anonymous"
           id="car_roughness"
@@ -981,9 +1024,10 @@
       </a-entity>
 
       <!-- :: 攤車空間展品  故事牆 -->
+
       <a-entity
         id="car_story_wall"
-        position="12.72335 2.52533 3.71278"
+        position="12.72335 2.2 3.71278"
         rotation="0 -118.8176957230496 0"
       >
         <a-entity
@@ -991,9 +1035,7 @@
           geometry="depth: 1.79; height: 3.260; width: 0.17"
           mixin="car_textures"
           position="-1.75755 -0.27744 3.02005"
-          scale=""
           rotation="0 155.71273998270382 0"
-          material=""
         >
         </a-entity>
         <a-entity
@@ -1004,43 +1046,139 @@
           normal-map="#car_normal"
           roughness-map="#car_roughness"
           rotation="0 -146.2503419961183 0"
-          material=""
-        >
-        </a-entity>
-        <a-entity
-          id="car_story_wall03"
-          geometry="depth: 1.79; height: 3.260; width: 0.17"
-          mixin="car_textures"
-          position="-1.72414 -0.27753 4.7402"
-          normal-map="#car_normal"
-          roughness-map="#car_roughness"
-          rotation="0 -146.2503419961183 0"
-          material=""
-        >
-        </a-entity>
-        <a-entity
-          id="car_story_wall04"
-          geometry="depth: 1.79; height: 3.260; width: 0.17"
-          mixin="car_textures"
-          position="-1.72414 -0.27753 4.7402"
-          normal-map="#car_normal"
-          roughness-map="#car_roughness"
-          rotation="0 -146.2503419961183 0"
-          material=""
-        >
-        </a-entity>
-        <a-entity
-          id="car_story_wall05"
-          geometry="depth: 1.79; height: 3.260; width: 0.17"
-          mixin="car_textures"
-          position="-1.72414 -0.27753 4.7402"
-          normal-map="#car_normal"
-          roughness-map="#car_roughness"
-          rotation="0 -146.2503419961183 0"
-          material=""
         >
         </a-entity>
       </a-entity>
+
+      <a-entity
+        id="car_story_album"
+        position="12.72335 2.160 3.71278"
+        rotation="0 -118.8176957230496 0"
+      >
+        <a-entity id="car_story_left" position="" material="">
+          <a-entity
+            id="car_story01"
+            geometry="depth: 0.02; height: 0.52; width: 0.64"
+            position="-1.38697 0.73615 5.02663"
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material="src:#car_story_01"
+            showstory="src:https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0101.png?v=1666489755866;"
+          >
+          </a-entity>
+          <a-entity
+            id="car_story02"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.38697 -0.2581 5.02663"
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material="src:#car_story_02"
+            crossorigin="anonymous"
+            showstory="src:https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0202.png?v=1666489760606;"
+          >
+          </a-entity>
+          <a-entity
+            id="car_story03"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.38697 -1.1878 5.02663"
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material="src:#car_story_03"
+            crossorigin="anonymous"
+            showstory="src:https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0302.png?v=1666489756964;"
+          >
+          </a-entity>
+          <a-entity
+            id="car_story04"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.78742 0.73548 4.29875"
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material="src:#car_story_04"
+            crossorigin="anonymous"
+            showstory="src:https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0402.png?v=1666489761033;"
+          >
+          </a-entity>
+          <a-entity
+            id="car_story05"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.78762 -0.25389 4.29837"
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material="src:#car_story_05"
+            crossorigin="anonymous"
+            showstory="src:https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0502.png?v=1666489756722;"
+          >
+          </a-entity>
+          <a-entity
+            id="car_story06"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.78789 -1.20643 4.29789"
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material="src:#car_story_06"
+            crossorigin="anonymous"
+            showstory="src:https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/story0602.png?v=1666489755764;"
+          >
+          </a-entity>
+        </a-entity>
+        <a-entity
+          id="car_story_right"
+          material=""
+          position="2.9671 0 1.42428"
+          rotation="0 -51.59484945153063 0"
+        >
+          <a-entity
+            id="car_story07"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.38697 0.73615 5.02663"
+            scale=""
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material=""
+          >
+          </a-entity>
+          <a-entity
+            id="car_story08"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.38697 -0.2581 5.02663"
+            scale=""
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material=""
+          >
+          </a-entity>
+          <a-entity
+            id="car_story09"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.38697 -1.1878 5.02663"
+            scale=""
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material=""
+          >
+          </a-entity>
+          <a-entity
+            id="car_story10"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.78742 0.73548 4.29875"
+            scale=""
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material=""
+          >
+          </a-entity>
+          <a-entity
+            id="car_story11"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.78762 -0.25389 4.29837"
+            scale=""
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material=""
+          >
+          </a-entity>
+          <a-entity
+            id="car_story12"
+            geometry="depth: 0.01; height: 0.52; width: 0.64"
+            position="-1.78789 -1.20643 4.29789"
+            scale=""
+            rotation="-0.10141352973815572 118.47621287715164 0.07620338675239949"
+            material=""
+          >
+          </a-entity>
+        </a-entity>
+      </a-entity>
+
       <!-- :: 攤車空間展品  信箱 -->
       <!-- 中間隔牆 -->
       <a-entity
@@ -1117,14 +1255,6 @@
         sound="src:#write_sound;"
         playsound
       ></a-box> -->
-      <!-- 
-			 a-camera 內建設定相機 : 請設定在最後面
-			 position 設定相機的起始位置
-			 fov	    設定相機的視線角度範圍，預設是 80 fov="80" 是給 vr的觀看 ， 45 度 適合網頁觀看 不會變形
-			 far      設定相機最遠可以照到哪裡
-			 near     設定最近可以看到哪裡
-			
-			-->
 
       <a-entity
         id="rig"
@@ -1155,7 +1285,25 @@
             >
             </a-plane>
           </a-plane>
-
+          <a-plane
+            id="infostory"
+            position="0 0 -0.1"
+            color="black"
+            opacity="0.7"
+            visible="false"
+            clicktohidestory
+          >
+            <a-plane
+              id="storyimg"
+              src="./assets/images/bar/barinfo.jpeg"
+              position="0 0 0.01"
+              color="white "
+              width="0.15"
+              height="0.1"
+              opacity="0.99"
+            >
+            </a-plane>
+          </a-plane>
           <a-plane
             id="infosound"
             position="0 0 -0.1"
@@ -1169,7 +1317,7 @@
               position="0 0 0.01"
               geometry="depth: 0.001; height: 0.1; width: 0.065"
               crossorigin="anonymous"
-              material="src: https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/playsound.jpeg?v=1666477558459"
+              material="src: https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/playsound.jpeg?v=1666477558459; opacity:0.8; "
               rotation=""
               scale=""
             >
