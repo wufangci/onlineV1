@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>video first</title>
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <a-sky color="black"></a-sky>
+      <a-assets>
+        <video
+          id="video_01"
+          crossorigin="anonymous"
+          autoplay="true"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/%E5%B7%AB%E7%99%92%E5%AD%90%E9%83%A8%E8%90%BD%E6%95%85%E4%BA%8B%E6%8E%A1%E9%9B%86%E8%A1%8C%E5%8B%95%E6%94%A4%E8%BB%8A2.0.mp4?v=1666994022252"
+        ></video>
+
+        <video
+          id="video_02"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/%E5%B7%AB%E7%99%92%E5%AD%90%E9%83%A8%E8%90%BD%E6%95%85%E4%BA%8B%E6%8E%A1%E9%9B%86%E8%A1%8C%E5%8B%95%E6%94%A4%E8%BB%8A2.0.mp4?v=1666994022252"
+        ></video>
+      </a-assets>
+
+      <a-camera position="-0.1 2.1 -0.7">
+        <a-cursor
+          id="cursor"
+          color="red"
+          material="color: red"
+          raycaster=""
+          scale="1 1 1"
+          material="opacity:0.1; "
+        ></a-cursor>
+      </a-camera>
+
+      <a-video
+        id="video_first"
+        src="#video_01"
+        width="3"
+        height="1.5"
+        position="-0.251 2.5 -2.236"
+      ></a-video>
+      <a-entity
+        video-controls="src:#video_01; barColor: gray; textColor: white;"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>

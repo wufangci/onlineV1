@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>video second</title>
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <a-sky color="black"></a-sky>
+      <a-assets>
+        <video
+          id="video_02"
+          autoplay="true"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.me/ad7d685d-6e86-4924-af13-1fd32aaf5c4f/videosecond.mp4?v=1667078156092"
+        ></video>
+      </a-assets>
+
+      <a-camera position="-0.1 2.1 -0.7">
+        <a-cursor
+          id="cursor"
+          color="red"
+          material="color: red"
+          raycaster=""
+          scale="1 1 1"
+          material="opacity:0.1; "
+        ></a-cursor>
+      </a-camera>
+
+      <a-video
+        id="video_second"
+        src="#video_02"
+        width="3"
+        height="1.5"
+        position="-0.251 2.5 -2.236"
+      ></a-video>
+      <a-entity
+        video-controls="src:#video_02; barColor: gray; textColor: white;"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>

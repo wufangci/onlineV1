@@ -1,0 +1,11 @@
+Model Information:
+* title:	Paper Lunch Sack
+* source:	https://sketchfab.com/3d-models/paper-lunch-sack-ffad00a48edb47f7ae6481f8996f9799
+* author:	g2bb (https://sketchfab.com/g2bb)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Paper Lunch Sack" (https://sketchfab.com/3d-models/paper-lunch-sack-ffad00a48edb47f7ae6481f8996f9799) by g2bb (https://sketchfab.com/g2bb) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
